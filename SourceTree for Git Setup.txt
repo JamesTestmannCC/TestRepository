@@ -1,0 +1,26 @@
+Configuring SourceTree for Git:
+1. In your ".gitconfig" file usually located in your windows user folder, add the following lines
+
+	[mergetool "unityyamlmerge"]
+		cmd = '%LOCATION OF UNITY INSTALL FOLDER%/Editor/Data/Tools/UnityYAMLMerge.exe' merge -p $BASE $REMOTE $LOCAL $MERGED
+		trustExitCode = true
+
+2. In "mergespecfile.txt" usually located in your unity install folder +"/Editor/Data/Tools/", change the lines:
+
+	unity use "%programs%\YouFallbackMergeToolForScenesHere.exe" "%l" "%r" "%b" "%d"
+	prefab use "%programs%\YouFallbackMergeToolForPrefabsHere.exe" "%l" "%r" "%b" "%d"
+
+to
+
+	unity use "%programs%\Perforce\p4merge.exe" "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+	prefab use "%programs%\Perforce\p4merge.exe" "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+
+and add the general fallback: 
+
+	* use "%programs%\Perforce\p4merge.exe" "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+
+(NB this is if you have p4merge as your default diff tool. Adjust accordingly!)
+
+3. In SourceTree goto Repository -> Git Flow -> Initialize and accept the defaults. This enables easy feature creation.
+
+4. When/if asked to install LFS for git in SourceTree, say yes! Otherwise goto Repository -> Git LFS -> Initialize.
