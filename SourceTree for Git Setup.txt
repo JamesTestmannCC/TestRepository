@@ -21,6 +21,6 @@ and add the general fallback:
 
 (NB this is if you have p4merge as your default diff tool. Adjust accordingly!)
 
-3. In SourceTree goto Repository -> Git Flow -> Initialize and accept the defaults. This enables easy feature creation.
+3. In SourceTree goto Repository -> Git Flow -> Initialize and accept the defaults (add "v" in version tag). This enables easy feature creation.
 
 4. When/if asked to install LFS for git in SourceTree, say yes! Otherwise goto Repository -> Git LFS -> Initialize.
